@@ -1,6 +1,7 @@
 package observer.pattern;
 
 import java.awt.Color;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -28,7 +29,7 @@ import observer.CourseRecord;
 public class CourseController extends JPanel implements Observer, ChangeListener, ActionListener {
 	/**
 	 * Constructs a CourseController object
-	 * 
+	 *
 	 * @param courses
 	 *            a set of courses and their marks
 	 */
@@ -70,7 +71,7 @@ public class CourseController extends JPanel implements Observer, ChangeListener
 
 	/**
 	 * Add a new course
-	 * 
+	 *
 	 * @param record
 	 *            the new course record to be added
 	 */
@@ -94,21 +95,21 @@ public class CourseController extends JPanel implements Observer, ChangeListener
 
 	/**
 	 * Informs this CourseController that a new course has been added
-	 * 
+	 *
 	 * @param o
 	 *            the CourseData subject that has changed
 	 */
-	 public void update(Observable o) {
+	public void update(Observable o) {
 		CourseData courses = (CourseData) o;
 		Vector<CourseRecord> newCourses = courses.getUpdate();
 		for (int i = sliders.size(); i < newCourses.size(); i++) {
 			this.addCourse((CourseRecord) newCourses.elementAt(i));
 		}
-	} 
+	}
 
 	/**
 	 * Manages the creation of a new course. Called when the "New Course" button is pressed.
-	 * 
+	 *
 	 * @param arg0
 	 *            not used
 	 */
@@ -122,7 +123,7 @@ public class CourseController extends JPanel implements Observer, ChangeListener
 
 	/**
 	 * Handles the changing of the marks for a course (changing of a JSlider)
-	 * 
+	 *
 	 * @param arg0
 	 *            the JSlider that has changed
 	 */
@@ -133,7 +134,7 @@ public class CourseController extends JPanel implements Observer, ChangeListener
 
 	/**
 	 * Sets up an initial set of three courses
-	 * 
+	 *
 	 * @param args
 	 *            not used
 	 */
@@ -145,10 +146,16 @@ public class CourseController extends JPanel implements Observer, ChangeListener
 
 		CourseController controller = new CourseController(data);
 		BarChartObserver bar = new BarChartObserver(data);
+		PieChartObserver pie = new PieChartObserver(data);
+		JPanel panel = new JPanel();
+		panel.add(bar);
+		panel.add(pie);
 
-		JScrollPane scrollPane = new JScrollPane(bar,
+		JScrollPane scrollPane = new JScrollPane(panel,
 				JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+
+
 
 		JFrame frame = new JFrame("Observer Pattern");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
