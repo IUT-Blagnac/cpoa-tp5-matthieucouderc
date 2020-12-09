@@ -61,7 +61,6 @@ public class CourseData extends Observable {
 		}
 		this.notifyObservers();
 	}
-
 	/**
 	 * Return a copy of the vector of course data. Used by Observers to pull
 	 * data.
@@ -71,6 +70,5 @@ public class CourseData extends Observable {
 	public Vector<CourseRecord> getUpdate() {
 		return (Vector<CourseRecord>) courseData.clone();
 	}
-
 	private Vector<CourseRecord> courseData;
 }

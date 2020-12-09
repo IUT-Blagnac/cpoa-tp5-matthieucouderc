@@ -31,6 +31,7 @@ public class PieChartObserver extends ChartObserver {
                 //draw the arc
                 g.setColor(LayoutConstants.courseColours[i%LayoutConstants.courseColours.length]);
                 g.fillArc(LayoutConstants.xOffset, LayoutConstants.yOffset, 2 * radius, 2 * radius, (int) startAngle, (int) ratio);
+             
                 startAngle += ratio;
             }
         }

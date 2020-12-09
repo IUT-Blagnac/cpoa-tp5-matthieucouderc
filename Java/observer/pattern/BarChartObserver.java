@@ -51,6 +51,7 @@ public class BarChartObserver extends ChartObserver {
 					LayoutConstants.xOffset + (i + 1)
 							* LayoutConstants.barSpacing + i
 							* LayoutConstants.barWidth, LayoutConstants.yOffset
+				
 							+ LayoutConstants.graphHeight + 20);
 		}
 	}
