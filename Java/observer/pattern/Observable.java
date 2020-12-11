@@ -39,10 +39,10 @@ public abstract class Observable {
 	/**
 	 * Notify all Observers that Subject has changed
 	 */
-	public void notifyObservers() {
+	public void notifyObservers(Object param) {
 		for (int i = 0; i < observers.size(); i++) {
 			Observer observer = observers.elementAt(i);
-			observer.update(this);
+			observer.update(param);
 		}
 	}
 
