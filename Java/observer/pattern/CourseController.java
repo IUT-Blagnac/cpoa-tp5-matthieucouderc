@@ -211,4 +211,13 @@ public class CourseController extends JPanel implements Observer, ChangeListener
 	private Vector<JSlider> sliders;
 
 	private JPanel coursePanel;
+	
+	public Vector<JSlider> getSliders() {
+		return sliders;
+	}
+
+	public CourseData getCourseData() {
+		return courseData;
+	}
+
 }
