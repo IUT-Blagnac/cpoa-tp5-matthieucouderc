@@ -39,10 +39,31 @@ public abstract class Observable {
 	/**
 	 * Notify all Observers that Subject has changed
 	 */
+	public void notifyObservers() {
+		for (int i = 0; i < observers.size(); i++) {
+			Observer observer = observers.elementAt(i);
+			observer.update(this);
+		}
+	}
+	
+	/**
+	 * Notify all Observers that Subject has changed
+	 */
 	public void notifyObservers(Object param) {
 		for (int i = 0; i < observers.size(); i++) {
 			Observer observer = observers.elementAt(i);
 			observer.update(param);
+		}
+	}
+	
+	/**
+	 * Notify all Observers that Subject has changed
+	 */
+	public void notifyObservers(Object param, Observer.ObserverType type) {
+		for (int i = 0; i < observers.size(); i++) {
+			Observer observer = observers.elementAt(i);
+			if (observer.getTypes().contains(type))
+				observer.update(param);
 		}
 	}
 

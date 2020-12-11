@@ -1,5 +1,7 @@
 package observer.pattern;
 
+import java.util.ArrayList;
+
 /**
  * An interface for all Observers
  */
@@ -19,4 +21,10 @@ public interface Observer {
 	 * @param o the data subject that has changed
 	 */
 	public void update(Object o);
+	
+	public ArrayList<ObserverType> getTypes();
+
+	enum ObserverType{
+		CREATE, UPDATE, REMOVE
+	}
 }

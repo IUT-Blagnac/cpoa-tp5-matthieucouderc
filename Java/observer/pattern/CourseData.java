@@ -40,7 +40,7 @@ public class CourseData extends Observable {
 		}
 		if (!alreadyExists)
 			this.courseData.addElement(courseRecord);
-		this.notifyObservers(this.courseData);
+		this.notifyObservers(courseRecord, Observer.ObserverType.CREATE);
 	}
 
 	/**
@@ -59,8 +59,11 @@ public class CourseData extends Observable {
 				i = courseData.size();
 			}
 		}
-		this.notifyObservers(courseData.clone());
+		for (CourseRecord record : courseData)
+			if (record.getName().equals(subjectName))
+				this.notifyObservers(record, Observer.ObserverType.UPDATE);
 	}
+
 	/**
 	 * Return a copy of the vector of course data. Used by Observers to pull
 	 * data.
@@ -70,5 +73,6 @@ public class CourseData extends Observable {
 	public Vector<CourseRecord> getUpdate() {
 		return (Vector<CourseRecord>) courseData.clone();
 	}
+
 	private Vector<CourseRecord> courseData;
 }
